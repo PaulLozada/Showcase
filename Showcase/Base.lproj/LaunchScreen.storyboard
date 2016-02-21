@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ebD-0A-HCZ">
+                                <rect key="frame" x="179.5" y="236" width="241" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="241" id="YIL-9e-gVr"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ebD-0A-HCZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7TM-nN-j6U"/>
+                            <constraint firstItem="ebD-0A-HCZ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="216" id="PW3-kT-Q6n"/>
+                            <constraint firstItem="ebD-0A-HCZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pZk-Sv-LWV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchIcon" width="807" height="601"/>
+    </resources>
 </document>
