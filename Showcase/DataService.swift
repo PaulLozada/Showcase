@@ -9,10 +9,14 @@
 import Foundation
 import Firebase
 
+let URL_BASE = "https://appshowcase1.firebaseio.com/"
+
 class DataService {
     static let ds = DataService( )
     
-    private var _REF_Base = Firebase(url: "https://appshowcase1.firebaseio.com")
+    private var _REF_Base = Firebase(url: "\(URL_BASE)")
+    private var _REF_POSTS = Firebase(url: "\(URL_BASE)/posts")
+    private var _REF_USERS = Firebase(url: "\(URL_BASE)/users")
     
     var REF_Base : Firebase {
         return _REF_Base
