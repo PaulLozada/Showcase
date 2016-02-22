@@ -13,7 +13,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView : UITableView!
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! DataCell
         return cell
     }
     
@@ -22,7 +22,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
 

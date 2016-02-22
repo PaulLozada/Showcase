@@ -20,6 +20,7 @@ class DataCell: UITableViewCell {
 
     override func drawRect(rect: CGRect) {
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+        profileImage.clipsToBounds = true
 }
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
