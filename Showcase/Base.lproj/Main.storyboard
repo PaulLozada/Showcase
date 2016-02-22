@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -117,11 +118,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BuQ-k0-tGo" customClass="MaterialView" customModule="Showcase" customModuleProvider="target">
                                 <rect key="frame" x="20" y="81" width="560" height="128"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-vO-xMd">
-                                        <rect key="frame" x="-42" y="0.0" width="401" height="128"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="equalCentering" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-vO-xMd">
+                                        <rect key="frame" x="-42" y="0.0" width="1458" height="490"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-Mx-hlF">
-                                                <rect key="frame" x="20" y="20" width="152" height="88"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="m1u-Mx-hlF">
+                                                <rect key="frame" x="0.0" y="0.0" width="490" height="490"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="152" id="DLd-2M-mRV">
                                                         <variation key="widthClass=compact" constant="145"/>
@@ -150,8 +151,8 @@
                                                     </mask>
                                                 </variation>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrF-EE-bSX">
-                                                <rect key="frame" x="180" y="48" width="201" height="39"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrF-EE-bSX">
+                                                <rect key="frame" x="482" y="0.0" width="976" height="490"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="gxw-fR-Ddr"/>
                                                     <constraint firstAttribute="width" constant="201" id="jv9-JQ-5me"/>
@@ -172,6 +173,9 @@
                                                         <include reference="jv9-JQ-5me"/>
                                                     </mask>
                                                 </variation>
+                                                <connections>
+                                                    <action selector="fbButtongPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Chj-3z-hEE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -277,17 +281,17 @@
                                         <exclude reference="mPy-Vm-7Au"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="2RV-aZ-cc2"/>
-                                        <exclude reference="D48-ko-h03"/>
-                                        <exclude reference="mAc-aU-gNd"/>
+                                        <exclude reference="cjg-d2-67D"/>
                                         <exclude reference="A36-q9-8mv"/>
                                         <exclude reference="LDd-95-zcX"/>
                                         <exclude reference="cyX-Ks-z2n"/>
                                         <exclude reference="k7I-r9-kYI"/>
-                                        <exclude reference="cjg-d2-67D"/>
                                         <exclude reference="3Hm-wt-yhn"/>
                                         <exclude reference="LsV-k1-Gxg"/>
                                         <exclude reference="Whi-Sg-oGe"/>
+                                        <exclude reference="2RV-aZ-cc2"/>
+                                        <exclude reference="D48-ko-h03"/>
+                                        <exclude reference="mAc-aU-gNd"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
@@ -303,17 +307,17 @@
                                         <include reference="mPy-Vm-7Au"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="2RV-aZ-cc2"/>
-                                        <include reference="D48-ko-h03"/>
-                                        <include reference="mAc-aU-gNd"/>
+                                        <include reference="cjg-d2-67D"/>
                                         <include reference="A36-q9-8mv"/>
                                         <include reference="LDd-95-zcX"/>
                                         <include reference="cyX-Ks-z2n"/>
                                         <include reference="k7I-r9-kYI"/>
-                                        <include reference="cjg-d2-67D"/>
                                         <include reference="3Hm-wt-yhn"/>
                                         <include reference="LsV-k1-Gxg"/>
                                         <include reference="Whi-Sg-oGe"/>
+                                        <include reference="2RV-aZ-cc2"/>
+                                        <include reference="D48-ko-h03"/>
+                                        <include reference="mAc-aU-gNd"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -337,10 +341,10 @@
                                 <exclude reference="YGB-Fu-erH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="9Ju-zu-wsC"/>
                                 <exclude reference="2j7-BW-vih"/>
                                 <exclude reference="Afs-8Q-PPK"/>
                                 <exclude reference="AuQ-F3-zbg"/>
-                                <exclude reference="9Ju-zu-wsC"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -348,11 +352,11 @@
                                 <include reference="YGB-Fu-erH"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="3UY-l0-476"/>
+                                <include reference="9Ju-zu-wsC"/>
                                 <include reference="2j7-BW-vih"/>
                                 <include reference="Afs-8Q-PPK"/>
                                 <include reference="AuQ-F3-zbg"/>
-                                <exclude reference="3UY-l0-476"/>
-                                <include reference="9Ju-zu-wsC"/>
                             </mask>
                         </variation>
                     </view>
