@@ -51,7 +51,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapshot in
             print(snapshot.value)
             
-            self.posts = []
+            self.posts = [ ]
             if let snapshots = snapshot.children.allObjects as? [FDataSnapshot]{
                 for snap in snapshots{
                     print("SNAP :\(snap)")
