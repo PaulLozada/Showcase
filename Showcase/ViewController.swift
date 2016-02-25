@@ -9,15 +9,13 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SafariServices
 
-class ViewController: UIViewController {
-
-    
-    @IBOutlet weak var emailField : UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+class ViewController: UIViewController, SFSafariViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,10 +26,21 @@ class ViewController: UIViewController {
             self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: self)
         }
     }
+    
+    
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+    }
+    
+    //MARK: IBOutlets
+    @IBOutlet weak var emailField : UITextField!
+    @IBOutlet weak var passwordField: UITextField!
 
+    //MARK: IBActions
+    
     @IBAction func fbButtongPressed(sender:UIButton!){
         
-        let facebookLogin = FBSDKLoginManager()
+        let facebookLogin = FBSDKLoginManager( )
+        
         facebookLogin.logInWithReadPermissions(["email"]) { (facebookResult: FBSDKLoginManagerLoginResult!, facebookError: NSError!) in
             
             if facebookError != nil {
