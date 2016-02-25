@@ -12,7 +12,8 @@ import Alamofire
 
 class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    var posts = [ Post ]( )
+    var posts = [Post]( )
+    var imageSelected = false
     var imagePicker = UIImagePickerController( )
     static var imageCache = NSCache( )
     
@@ -26,7 +27,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     @IBAction func makePost(sender: UIButton) {
         
         if let txt = postField.text where txt != "" {
-            if let img = imageSelectorImage.image {
+            if let img = imageSelectorImage.image where imageSelected == true {
                 let urlSting = "https://post.imageshack.us/upload_api.php"
                 let url = NSURL(string: urlSting)!
                 let imageData = UIImageJPEGRepresentation(img, 0.2)!
@@ -35,7 +36,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 
                 Alamofire.upload(.POST, url, multipartFormData: { multipartFormData in
                     
-                    multipartFormData.appendBodyPart(data: imageData, name: "fileupload", fileName: "image", mimeType: "image/jpg")
+                    multipartFormData.appendBodyPart(data: imageData, name: "fileupload", fileName: self.postField.text!, mimeType: "image/jpg")
                     multipartFormData.appendBodyPart(data: keyData, name: "key")
                     multipartFormData.appendBodyPart(data: keyJson, name: "format")
                     
@@ -48,7 +49,9 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                             if let info = response.result.value as? [String:AnyObject] {
                                 if let links = info["links"] as? [String:AnyObject] {
                                     if let imgLink = links["image_link"] as? String {
+                                        print("LINK \(imgLink)")
                                         
+                                    self.postToFireBase(imgLink)
                                     }
                                 }
                             }
@@ -59,6 +62,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     }
                     
                 }
+            } else {
+                postToFireBase(nil)
             }
             
         }
@@ -69,6 +74,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         imageSelectorImage.image = image
+        imageSelected = true
     
         
     }
@@ -141,15 +147,22 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func postToFireBase(imgUrl : String?)  {
+        var post :[String:AnyObject] = [
+            "description":postField.text!,
+            "likes" : 0
+        ]
+        
+        if imgUrl != nil{
+            post["imageUrl"] = imgUrl!
+        }
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId( )
+        firebasePost.setValue(post)
+        postField.text = ""
+        imageSelectorImage.image = UIImage(named: "Camera")
+        imageSelected = false
+        
+        tableView.reloadData()
     }
-    */
-
 }
